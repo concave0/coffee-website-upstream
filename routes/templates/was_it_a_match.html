@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title> Homepage </title>
+    
+    <style>
+        body {
+            background-color: #fffcfc;
+            /* font-family: Georgia, 'Times New Roman', Times, serif , sans-serif, Helvetica, Arial; */
+            font-family: Georgia, 'Times New Roman', Times, serif , sans-serif, Helvetica, Arial;
+            font-style: italic;
+            font-weight: bolder;
+        }
+        h1 {
+            font-size: 2.5em;
+            color:  #f8f9f5;
+        }
+        .custom-text {
+            font-family: Georgia, 'Times New Roman', Times, serif , sans-serif, Helvetica, Arial;
+            font-style: italic;
+            font-weight: bolder;
+            color:  #f8f9f5;
+        }
+        .sidebar {
+            height: 300px; /* Fixed height */
+            overflow-y: auto; /* Make it scrollable */
+        }
+    </style>
+</head>
+<body>
+    
+<div class="bg-image">
+  
+  <!-- Form -->
+  <div class="container">
+
+    <h2> Did you mean {{ data }} </p> ?</h2>
+    
+    <form id="myForm" action="/submit-answer" method="POST"> 
+        <p id="data" style="color:#ffffff">{{data}}</p> 
+        <div class="btn-group" role="group" aria-label="Yes or No">
+            <input type="radio" class="btn-check" name="answer" id="btnradioYes" autocomplete="off" checked value="Yes">
+            <label class="btn btn-outline-success" for="btnradioYes">Yes</label>
+
+            <input type="radio" class="btn-check" name="answer" id="btnradioNo" autocomplete="off" value="No">
+            <label class="btn btn-outline-danger" for="btnradioNo">No</label>
+        </div>
+    </form>
+    
+    <script>
+        const yesButton = document.getElementById('btnradioYes');
+        const noButton = document.getElementById('btnradioNo');
+        
+        yesButton.addEventListener('click', () => {
+            console.log('Yes selected');
+
+            const text =   document.getElementById("data").textContent;
+            const url = '/redirect_data_sources/'+text
+            const response =  fetch(url, {
+                    method: 'GET',
+                }
+            ).then(response => {
+                if (response.redirected) { 
+                        window.location.href = response.url;
+                    } else {
+                       
+                    }
+            }).catch(error => {
+                    
+            });
+        }); // end of yesButton listener
+
+        
+        noButton.addEventListener('click', () => {
+            console.log('No selected');
+            const url = '/redirect_four_o_four'
+            const response =  fetch(url, {
+                    method: 'GET',
+        }).then(response => {
+                if (response.redirected) { 
+                        window.location.href = response.url;
+                    } else {
+                       
+                    }
+            }).catch(error => {
+        });
+    }); // end of noButton listener 
+
+    </script>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+    
+</body>
+</html>

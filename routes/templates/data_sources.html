@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data On Your Favorite Coffee</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Georgia, serif; /* NYT-style serif font */
+            line-height: 1.6;
+            color: #333;
+            margin: 0; /* Remove default body margin */
+        }
+
+        .masthead {
+            background-color: #f4f4f4; /* Light gray background */
+            padding: 20px;
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space out logo and navigation */
+            align-items: center;
+        }
+
+        .logo {
+            font-family: "Old English Text MT", serif; /* Distinctive logo font */
+            font-size: 2em;
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; 
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .subscribe-btn {
+            background-color: #000; /* Black button */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Top Stories Section */
+        .top-stories {
+            /* Styling for top stories section - add your CSS here */
+        }
+
+        /* News Section */
+        .news-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+            gap: 20px;
+        }
+
+        /* Article Styles */
+        article {
+            border-bottom: 1px solid #ddd; /* Subtle divider between articles */
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        article h2 {
+            font-size: 1.2em;
+        }
+
+        article p {
+            margin-top: 5px;
+        }
+         /* Blog Post Styles */
+         article {
+            border-bottom: 1px solid #ddd; 
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        article h2 { /* Blog post title */
+            font-size: 2em;
+        }
+
+        article .post-metadata { /* Date, author, etc. */
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        article img { /* Featured image */
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        article p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+    <body>
+        <center> 
+            <section class="news-section">
+                <article>
+                    <h2> <strong>Information</strong> </h2>
+                    <div class="article-grid">
+                        <div class="bg-image">
+                            <p> {{ data }} </p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </center>
+    </body>
+</html>
