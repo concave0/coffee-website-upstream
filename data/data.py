@@ -5,7 +5,6 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 from threading import Thread
 from apscheduler.triggers.interval import IntervalTrigger
 
-
 class CoffeeData(BaseModel): 
   favorite_coffee: str 
   hashmap: dict 
@@ -28,7 +27,6 @@ class DataWorkers():
     return file_size
     
   def updating(self): 
-    
     file_path = "data/store/user_input.json"
     try:
         with open(file_path, 'r') as file:
@@ -42,7 +40,7 @@ class DataWorkers():
         json.dump(data, file, indent=4)
       
   def set_jobs(self): 
-    trigger = IntervalTrigger(seconds=1800) # Record user input every 30 minutes
+    trigger = IntervalTrigger(seconds=3) # Record user input every 3 seconds
     self.scheduler.add_job(self.save, trigger)
     
   def start_scheduler(self):
